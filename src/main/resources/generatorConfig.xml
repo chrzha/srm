@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <!-- 引入配置文件 -->  
+  <properties resource="config/application.properties"/>  
+  <!-- 数据库驱动 -->  
+  <classPathEntry location="C:/Users/elvfan/.m2/repository/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar" />
+  
+  <context id="MysqlTables" targetRuntime="MyBatis3">
+   	<commentGenerator>  
+            <property name="suppressDate" value="true"/>  
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
+            <property name="suppressAllComments" value="true"/>  
+    </commentGenerator>  
+    <!--数据库链接URL，用户名、密码 --> 
+    <jdbcConnection driverClass="${driver}"
+        connectionURL="jdbc:mysql://${hostname}:${portnumber}/srm" 
+        userId="${username}"
+        password="${password}">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+ 	<!-- 生成模型的包名和位置 -->  
+    <javaModelGenerator targetPackage="com.haohe.srm.model" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+	<!-- 生成映射文件的包名和位置 -->  
+    <sqlMapGenerator targetPackage="com.haohe.srm.dao"  targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+	<!-- 生成DAO的包名和位置 -->  
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.haohe.srm.dao"  targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    <!-- 要生成哪些表 -->  
+     
+<!-- 
+ <table tableName="buyer" domainObjectName="Buyer" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="gender" domainObjectName="Gender" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="inquiry_order" domainObjectName="InquiryOrder" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="inq_sup" domainObjectName="InqSup" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="material" domainObjectName="Material" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="material_type" domainObjectName="MaterialType" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="purchase_item" domainObjectName="PurchaseItem" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="quotation" domainObjectName="Quotation" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="quot_item" domainObjectName="QuotItem" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="requester" domainObjectName="Requester" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="supplier" domainObjectName="Supplier" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="supplier_rank" domainObjectName="SupplierRank" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="supplier_type" domainObjectName="SupplierType" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="uom" domainObjectName="UOM" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ <table tableName="workshop" domainObjectName="Workshop" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>  
+ -->
+<table tableName="supplier" domainObjectName="Supplier" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>
+<table tableName="sup_typ" domainObjectName="SupTyp" enableInsert="true" enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false" ></table>
+  
+ 
+  </context>
+</generatorConfiguration>
